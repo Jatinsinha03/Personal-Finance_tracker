@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@800&display=swap" rel="stylesheet">
+    <title>SignUp</title>
+    <style>
+        body{
+            font-family: 'Geologica', sans-serif;
+        }
+        .grid-container{
+            grid-template-columns: 1fr 1fr; 
+            display: grid;
+            height:fit-content
+            
+        }
+
+        .grid-item{
+            height: 100vh;
+        }
+
+        .first{
+            font-family: 'Geologica', sans-serif;
+            font-weight: 800;
+            line-height: 40px;
+            color: #1abc9c;
+            text-align: center;
+            background: #ffffff;
+            border: none;
+        }
+        h1{
+            font-size: 60px;
+        }
+
+        h1.heading1{
+            padding-top:30vh ;
+        }
+
+        .second{
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        .basic{
+            padding-top: 15vh;
+
+
+        }
+
+        .vl {
+            border-left: 6px solid #1abc9c;;
+            height: 500px;
+            position: absolute;
+            left: 50%;
+            margin-left: -3px;
+            top: 20vh;
+        }
+
+        button.login{
+            background-color: #1abc9c;
+            font-family: 'Geologica', sans-serif;
+            font-weight: 300;
+            font-size: 20px;
+            gap: none;
+            padding: 20px 191.3px;
+            border: none;
+            border-radius: none;
+        }
+
+        input{
+            width: 444.7px;
+            height: 50px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        ::placeholder{
+            font-size: 15px;
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <div class="vl"></div>
+    <div class="grid-container">
+        <div class="grid-item first">
+        <h1 class="heading1">Sign Up</h1>
+        <center><h1 class="heading2" style="font-size: 20px; width: 70%; color: #000000;">We invite you to embark on a transformative journey of self-expression and introspection through daily journaling.</h1></center>
+    </div>
+        <div class="grid-item second">
+            <div class="basic">
+                <h1>SignUp</h1><br>
+
+                <form action="/signUp" method="post">
+                <input type="text" placeholder="Enter username" name="username"><br><br>
+                <input type="text" name="name" placeholder="Enter Name"><br><br>
+                <input type="password" name="password" placeholder="Enter password"><br><br>
+                <button type="sumbit" class="login">SignUp</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

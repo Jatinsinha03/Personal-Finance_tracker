@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Personal Finance Dashboard</title>
+  <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .sidenav {
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .sidenav button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .sidenav .logout-btn {
+    position: absolute;
+    bottom: 20px;
+  }
+  
+  .content {
+    margin-left: 200px;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .dashboard-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-box {
+    width: calc(33% - 10px);
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .dashboard-box h2 {
+    margin-top: 0;
+  }
+  
+  .dashboard-value {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="sidenav">
+    <button><a href="/dashboard">Dashboard</a></button>
+    <button><a href="/transaction">Transactions</a></button>
+    <button onclick="location.href='food.html'">Food Payments</button>
+    <button onclick="location.href='bills.html'">Bill Payments</button>
+    <button onclick="location.href='others.html'">Other Expenses</button>
+    <button class="logout-btn" onclick="location.href='logout.html'">Logout</button>
+  </div>
+
+  <div class="content">
+    <h1>Dashboard</h1>
+
+    <div class="dashboard-boxes">
+      <div class="dashboard-box">
+        <h2>Current Balance</h2>
+        <p class="dashboard-value"><%=currentBalance%></p>
+      </div>
+      <div class="dashboard-box">
+        <h2>Total Spent</h2>
+        <p class="dashboard-value"><%=totalSpent%></p>
+      </div>
+      <div class="dashboard-box">
+        <h2>Total Credit</h2>
+        <p class="dashboard-value"><%=credit%></p>
+      </div>
+    </div>
+
+    <div class="dashboard-boxes">
+      <div class="dashboard-box">
+        <h2>Food Payments</h2>
+        <p class="dashboard-value"><%=food%></p>
+      </div>
+      <div class="dashboard-box">
+        <h2>Bill Payments</h2>
+        <p class="dashboard-value"><%=bill%></p>
+      </div>
+      <div class="dashboard-box">
+        <h2>Other Expenses</h2>
+        <p class="dashboard-value"><%=other%></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+#1abc9c green
+
+
+const userSchema = new  mongoose.Schema({
+  username:String,
+  password:String,
+  googleId:String,
+  name:String,
+  totalSpent:[Category:String, Amount:String, Description:String],
+  credit:Number,
+  currentBalance:Number,
+  transactions: [{ Type: String, Category: String, Amount:Number, Description:String }]
+});
+
+db.users.findOneAndUpdate({username:"The Explorer"},{$push:{totalSpent:{Category:"None", Amount:100, Description:"req.body.description"}}});
+db.users.findOneAndUpdate({username:"Jatin Sinha"},{$inc:{credit:5}})
+
+db.users.find({username:"Jatin Sinha"}, {"totalSpent.Category":"food" });
+db.users.find({"username" : "Jatin Sinha"} ,{getField:{"totalSpent.Category" : "food"}});
+db.users.find({"$and": [{"username":"Jatin Sinha"}]},{"totalSpent":1});
+
+.Category
