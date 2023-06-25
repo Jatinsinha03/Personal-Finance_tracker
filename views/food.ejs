@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Food Payments</title>
+  <link rel="stylesheet" href="style3.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    /* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #171C3A;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Sidenav Styling */
+  .sidenav {
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1abc9c;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .sidenav button,
+  .sidenav a {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #1abc9c;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+  }
+  
+  .sidenav button:hover,
+  .sidenav a:hover {
+    background-color: #16a085;
+  }
+  
+  .sidenav .logout-btn {
+    margin-top: auto;
+  }
+  
+  /* Content Styling */
+  .content {
+    margin-left: 240px;
+    margin-right: 20px;
+    padding: 20px 35px 20px 59px;
+  }
+  
+  
+  .dashboard-box {
+    background-color: #0A0E29;
+    padding: 30px;
+    text-align: center;
+    border-radius: 20px;
+    background: rgba(39, 39, 39, 0.1);
+    backdrop-filter: blur(60px);
+    -webkit-backdrop-filter: blur(60px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
+  }
+  
+  .dashboard-box h2 {
+    margin-top: 0;
+    font-size: 24px;
+    letter-spacing: 3px;
+  }
+  
+  .dashboard-value {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+
+.content h2 {
+  margin-top: 0;
+  margin-bottom: 30px; /* Increase the margin */
+  font-size: 24px; /* Increase the font-size */
+}
+
+.food-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+.food-table th,
+.food-table td {
+  padding: 10px;
+  border: 2px solid #ccc; 
+  text-align: left;
+}
+
+.food-table th {
+  background-color: #4D73E6;
+  color: #fff;
+}
+
+.food-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.food-table tbody tr:hover {
+  background-color: #ddd;
+}
+
+  </style>
+</head>
+<body>
+  <div class="sidenav">
+    <h1>HELLO WORLD</h1>
+    <button onclick="location.href='dashboard.html'">Dashboard</button>
+    <button onclick="location.href='transaction.html'">Transactions</button>
+    <button onclick="location.href='food.html'">Food Payments</button>
+    <button onclick="location.href='bills.html'">Bill Payments</button>
+    <button onclick="location.href='others.html'">Other Expenses</button>
+    <button class="logout-btn" onclick="location.href='logout.html'">Logout</button>
+  </div>
+
+  <div class="content">
+    <div class="dashboard-box" style="background: rgb(137,86,233); background: linear-gradient(90deg, rgba(137,86,233,1) 0%, rgba(77,115,230,1) 51%, rgba(77,115,230,1) 100%);">
+      <h2>TOTAL EXPENDITURE ON FOOD</h2>
+      <p class="dashboard-value">$0</p>
+    </div>
+
+    <table class="food-table">
+      <thead>
+        <tr>
+          <th>Amount</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0</td>
+          <td>$$$$$$$$$$</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
