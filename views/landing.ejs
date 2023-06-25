@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Daily Reflections</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Geologica:wght@200;800&display=swap"
-      rel="stylesheet"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Stylesheets -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Rubik:wght@300;400&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/9eafa9cb6c.js" crossorigin="anonymous"></script>
+
+    <title>FinanceWise</title>
     <style>
-      .vl1 {
+        .vl1 {
         position: absolute;
         top: 120px;
         left: 48%;
@@ -24,102 +32,6 @@
         height: 500px;
       }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: "Geologica", sans-serif;
-        padding: 1em;
-      }
-      p.para {
-        font-size: 1.5rem;
-        text-align: justify;
-        padding-top: 15vh;
-        padding-right: 45px;
-        line-height: 40px;
-        padding-left: 35px;
-      }
-      .intro-text {
-        padding-top: 25vh;
-        text-align: center;
-        font-size: 6rem;
-        width: 0ch;
-        overflow: hidden;
-        margin: 0 auto;
-        white-space: nowrap;
-        /* color: black; */
-        background-image: linear-gradient(155deg, #1abc9c, #1abc9c, #1abc9c);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-      .intro-text.active {
-        animation: typeIn 2s steps(28) forwards;
-      }
-      @keyframes typeIn {
-        to {
-          width: 25ch;
-        }
-      }
-
-      .box {
-        width: 100%;
-        height: 90vh;
-        background-color: #1abc9c;
-        text-align: center;
-        /* line-height: 200px; */
-        /* margin: 50em 0; */
-        /* margin-left: calc(50% - 100px); */
-        transition: transform 0.5s, opacity 0.5s;
-        color: #fff;
-        font-weight: bold;
-      }
-      .box.left {
-        transform: translateX(-200px);
-        opacity: 0;
-      }
-      .box.right {
-        transform: translateX(200px);
-        opacity: 0;
-        /* background-color: #473bf0; */
-      }
-      .box.top {
-        transform: translateY(-200px) rotate(360deg);
-        opacity: 0;
-        background-color: #3d2645;
-      }
-      .box.bottom {
-        transform: translateY(200px) scaleX(3);
-        opacity: 0;
-        background: #ede580;
-      }
-      .box.active {
-        transform: translateX(0);
-        opacity: 1;
-      }
-
-      .first {
-        height: 100vh;
-        background-color: #ffffff;
-      }
-
-      .secHeading {
-        padding-top: 7vh;
-        background-image: linear-gradient(155deg, #000000, #000000, #000000);
-        font-size: 5.5rem;
-      }
-
-      .heading {
-        padding-right: 30px;
-        font-size: 4rem;
-        padding-top: 30vh;
-      }
-
-      body {
-        font-family: "Geologica", sans-serif;
-      }
       .grid-container {
         grid-template-columns: 1fr 1fr;
         display: grid;
@@ -207,124 +119,385 @@
       .google:hover{
         color:#dd4b39 ;
       }
-    </style>
-  </head>
-  <body>
-    <div class="first">
-      <h1 class="intro-text">
-        Welcome to
-        <h1 class="intro-text secHeading">My Daily Reflections !</h1>
-      </h1>
-    </div>
-
-    <div class="scroll-reveal box left">
-      <div class="container text-center">
-        <div class="row">
-          <div class="col">
-            <h1 class="heading">
-              A Sanctuary for<br />Self-Expression<br />and Reflection
-            </h1>
-            <div class="vl1"></div>
-          </div>
-          <div class="col">
-            <p class="para">
-              At our website, we believe in the transformative power of daily
-              journaling. This digital space serves as a sanctuary where you can
-              freely express your thoughts, emotions, and experiences, allowing
-              for deep introspection and personal growth. Our mission is to
-              empower you to embrace your inner voice and discover the richness
-              that comes from self-reflection. Whether you're looking to
-              document your daily musings, explore your dreams and aspirations,
-              or seek solace during challenging times, this platform is your
-              canvas.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="scroll-reveal box right">
-      <div class="vl"></div>
-      <div class="grid-container">
-        <div class="grid-item first">
-          <h1 class="heading1">My Daily</h1>
-          <h1 class="heading2">Reflections</h1>
-        </div>
-        <div class="grid-item second">
-          <div class="basic">
-            <h1 style="color: #000000;">Login</h1>
-            <br />
-            <form action="/login" method="POST">
-              <input
-                type="text"
-                placeholder="Enter your username"
-                name="username"
-              /><br /><br />
-              <input
-                type="password"
-                placeholder="Enter password"
-                name="password"
-              /><br /><br />
-              <button class="login" type="submit">Login</button>
-            </form><br>
-            <h3 style="color: #000000;">Or</h3>
-            <a href="/auth/google" role="button" class="google btn">
-              <i class="fa fa-google fa-fw"></i> Login with Google+
-            </a><br><br>
-            <h4 style="color: #000000;">New to this website ? <a href="/signUp">Sign Up Here</a></h4>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script>
-      function scrollTrigger(selector, options = {}) {
-        let els = document.querySelectorAll(selector);
-        els = Array.from(els);
-        els.forEach((el) => {
-          addObserver(el, options);
-        });
-      }
-
-      function addObserver(el, options) {
-        if (!("IntersectionObserver" in window)) {
-          if (options.cb) {
-            options.cb(el);
-          } else {
-            entry.target.classList.add("active");
-          }
-          return;
+      .login-section {
+            padding: 100px 0;
         }
-        let observer = new IntersectionObserver((entries, observer) => {
-          //this takes a callback function which receives two arguments: the elemts list and the observer instance
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              if (options.cb) {
-                options.cb(el);
-              } else {
-                entry.target.classList.add("active");
-              }
-              observer.unobserve(entry.target);
-            }
-          });
-        }, options);
-        observer.observe(el);
-      }
-      // Example usages:
-      scrollTrigger(".intro-text");
 
-      scrollTrigger(".scroll-reveal", {
-        rootMargin: "-200px",
-      });
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
 
-      scrollTrigger(".loader", {
-        rootMargin: "-200px",
-        cb: function (el) {
-          el.innerText = "Loading...";
-          setTimeout(() => {
-            el.innerText = "Task Complete!";
-          }, 1000);
-        },
-      });
+        .login-form {
+            margin-top: 40px;
+        }
+
+        
+        .box{
+    position: absolute;
+    top: 235px;
+    left: 550px;
+    z-index: 1;
+    color:#030720;
+    width:300px;
+    height:150px;
+    background-color: #030720;
+    box-shadow: 5px 5px 5px #000000;
+
+
+}
+
+
+nav{
+    top: 23px;
+    text-align: right;
+    width:70%;
+    background-color: rgba(21, 21, 21, 0.218);
+    position: absolute;
+    z-index: 2;
+    padding: 1% 4%;
+    margin-left: 4%;
+    left: 12%;
+    border-radius: 17px;
+    font-size: 20px;
+}
+
+
+
+.navlinks{
+    color:white;
+    font-weight: 400;
+    padding: 0px 90px;
+    text-decoration: none;
+    font-family: "Roboto Condensed";
+}
+
+.logo{
+    padding-right: 6%;
+    color: white;
+    text-decoration: none;
+    font-family:"Noto Serif" ;
+    font-weight: 700;
+}
+
+.left,.right{
+    height: 800px;
+    padding: 0 0 0 0;
+    width:50%;
+}
+
+
+.img{
+    opacity: 90%;
+    width: 700px;
+    height: 800px;
+}
+
+.left{
+
+    
+    color: white;
+
+    background-image: linear-gradient(135deg,hsl(232deg 61% 10%) 0%,hsl(232deg 61% 11%) 5%,hsl(231deg 61% 11%) 14%,hsl(230deg 62% 12%) 25%,hsl(229deg 62% 12%) 36%,hsl(230deg 62% 13%) 48%,hsl(230deg 61% 13%) 61%,hsl(231deg 60% 14%) 73%,hsl(231deg 59% 14%) 87%,hsl(232deg 58% 15%) 100%);
+}
+
+.main-heading{
+    padding: 25% 0 15% 25%;
+    font-size: 1.7rem;
+    font-weight: lighter;
+}
+
+.big-heading{
+    color: white;
+    position: absolute;
+    top: 235px;
+    z-index: 1;
+    padding-left: 11%;
+    font-size: 7.2rem;
+    letter-spacing: 8px;
+}
+
+.main-desc{
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 12% 11% 0 25%;
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
+.big-heading,.main-heading{
+    font-family:"Noto Serif" ;
+}
+
+.submit{
+    color: white;
+    font-weight: 700;
+    background-color: #16a085;
+    height: 8%;
+    width: 35%;
+    margin-left: 25% ;
+    margin-top: 25px;
+    border:none;
+    border-radius: 10px;
+}
+
+/* Explore Section  */
+
+#explore{
+    color: white;
+    padding: 5% 6%;
+    /* text-align: left; */
+    background-color: white;
+    margin-top: 60px;
+    position: relative;
+    z-index: 5;
+}
+
+
+.explore-image{
+    border-radius: 10px;
+    text-align: left;
+    width: 600px;
+    height: 400px;
+}
+
+.desc{
+    text-align: justify;
+    padding: 9px 30px 10px 40px;
+    color: rgb(62, 62, 62);
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+}
+
+.explore-title{
+    font-family:"Noto Serif" ;
+    font-size: 3rem;
+    font-weight: 600;
+    padding-left: 40px;
+    text-align:left;
+    color: #3E131C;
+    
+}
+
+.explore-title-second{
+    font-family:"Noto Serif" ;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #3E131C;
+    text-align: left;
+}
+
+.desc-second{
+    text-align: left;
+    padding: 9px 30px 10px 0px;
+    color: rgb(62, 62, 62);
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+}
+
+.both{
+    margin-bottom: 50px;
+}
+
+.learn-more{
+    background-color: #3e131cea;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: 60px;
+    width: 200px;
+    margin-left: 40px;
+}
+.learn-more-2{
+    background-color: #3e131cea;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 10px;
+    height: 60px;
+    width: 200px;
+}
+
+
+/* Footer */
+
+#footer{
+    text-align: center;
+    padding: 7% 36% ;
+}
+
+.footer-icons{
+    font-size: 2rem;
+    color:#3E131C;
+    text-align: center;
+    width: 100px;
+    padding: 8% 5%;
+}
+
+.copyright{
+    color: #8f8f8f;
+}
+body {
+    overflow-x: hidden;
+}
+
+    </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            // Scroll to login section when the "Login / Sign Up" button in the main section is clicked
+            const loginButton = document.getElementById('loginButton');
+            const loginSection = document.getElementById('loginSection');
+
+            loginButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                loginSection.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // Scroll to login section when navbar buttons are clicked
+            const homeButton = document.getElementById('homeButton');
+            const loginNavbarButton = document.getElementById('loginNavbarButton');
+            const loginSection1 = document.getElementById('loginSection');
+
+            homeButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                loginSection1.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            loginNavbarButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                loginSection1.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
     </script>
-  </body>
+</head>
+<body>
+<div class="box">
+    lorem ipsum
+</div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="link">
+            <a class="logo" href="#">FinanceWise</a>
+            <a class="navlinks"  href="#">Home</a>
+            <a class="navlinks" id="loginNavbarButton" href="#">Login</a>
+            <a class="navlinks" id="homeButton">Sign Up</a>
+        </div>
+    </nav>
+    
+
+
+
+    <!-- Main -->
+
+    <section id="homeSection">
+        <h1 class="big-heading">TRACKING</h1>
+        <div class="row">
+            <div class="col left">
+                <h3 class="main-heading">Responsible</h3>
+                <p class="main-desc">FinanceWise is your digital finance management solution.
+                    We believe in empowering individuals to take control of their financial well-being.
+                    With FinanceWise, you can track your expenses effectively.
+                </p>
+                <input type="submit" name="submit" class="submit" id="loginButton" value="LOGIN / SIGN UP">
+            </div>
+            <div class="col right">
+                <img class="img" src="https://i.ibb.co/5RpSxy3/financewise.png">
+            </div>
+        </div>
+    </section>
+
+<!-- Explore Section -->
+
+<section id="explore">
+    <div class="row">
+        <div class="col-lg-6 both">
+            <img class="explore-image" src="https://leverageedublog.s3.ap-south-1.amazonaws.com/blog/wp-content/uploads/2020/03/16161305/Scope-of-Financial-Management.jpg" alt="">
+        </div>
+        <div class="col-lg-6 both ">
+            <h3 class="explore-title">Why FinanceWise</h3>
+            <br/>
+            
+            <p class="desc">With FinanceWise, you can track your expenses more effectively and gain
+                insights into your spending habits. A simple and user-friendly interaction enables more conclusive conversation with website
+            </p>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 both">
+            <h3 class="explore-title-second">Control your money</h3>
+            <br/>
+            
+            <p class="desc-second">
+                Every one earns money but only those who $tudy it are able to truly grasp it .This platform serves as your financial sanctuary
+                where you can freely explore your financial journey, make informed decisions, and
+                achieve financial freedom.
+            </p>
+            
+        </div>
+        <div class="col-lg-6 both">
+            <img class="explore-image" src="https://media.istockphoto.com/id/1215574547/photo/u-s-dollar-manipulation.jpg?s=612x612&w=0&k=20&c=Nr_Ftz9BTk_QUUiV_gufMFknk8Mh6VjZX75PkMeHhJQ=" alt="">
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-lg-6 both">
+            <img class="explore-image" src="https://play-lh.googleusercontent.com/GeWch97jeKVAb7KbdCo_xiTuKLlfWxBarloEtdSRpNayPUGQrb-8dTjUnPEoIfCHg14" alt="">
+        </div>
+        <div class="col-lg-6 both">
+            <h3 class="explore-title">Know you expenditure</h3>
+            <br/>
+            
+            <p class="desc">
+                Keep a track of you expenses and gain valuable insights regarding your everyday
+                money usage. Have a history of transactions permanently with you.
+            </p>
+            
+        </div>
+    </div>
+  
+</section>
+<!-- login-->
+
+<section id="loginSection" class="login-section">
+    <div class="login-container">
+        <h1 style="color: #000000;">Login</h1>
+        <br>
+        <form class="login-form" action="/login" method="POST">
+            <input type="text" placeholder="Enter your username" name="username" required><br><br>
+            <input type="password" placeholder="Enter password" name="password" required><br><br>
+            <button class="login" type="submit">Login</button>
+        </form><br>
+        <h3 style="color: #000000;">Or</h3>
+        <a href="/auth/google" role="button" class="google btn">
+            <i class="fa fa-google fa-fw"></i> Login with Google+
+        </a><br><br>
+        <h4 style="color: #000000;">New to this website? <a href="/signUp">Sign Up Here</a></h4>
+    </div>
+</section>
+
+
+<!-- Footer -->
+
+<footer id="footer">
+    <div class="row">
+      <div class="col-lg-3 footer-icons">
+        <i class="fa-brands fa-facebook"></i>
+      </div>
+      <div class="col-lg-3 footer-icons">
+        <i class="fa-brands fa-twitter"></i>
+      </div>
+      <div class="col-lg-3 footer-icons">
+        <i class="fa-brands fa-instagram"></i>
+      </div>
+      <div class="col-lg-3 footer-icons">
+        <i class="fa-solid fa-envelope"></i>
+      </div>
+    </div>
+
+    <p class="copyright">© Copyright Ernest & Fest</p>
+
+  </footer>
+</body>
 </html>
