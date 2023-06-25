@@ -2,128 +2,124 @@
 <html>
 <head>
   <title>Transactions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
-    body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .sidenav {
-    width: 200px;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-  }
-  
-  .sidenav button {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #444;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .sidenav .logout-btn {
-    position: absolute;
-    bottom: 20px;
-  }
-  
-  .content {
-    margin-left: 200px;
-    padding: 20px;
-  }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  .dashboard-boxes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .dashboard-box {
-    width: calc(33% - 10px);
-    background-color: #f2f2f2;
-    padding: 20px;
-    border: 1px solid #ddd;
-    text-align: center;
-  }
-  
-  .dashboard-box h2 {
-    margin-top: 0;
-  }
-  
-  .dashboard-value {
-    font-size: 24px;
-    font-weight: bold;
-  }
+    /* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #171C3A;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
 
-    .transaction-form {
-      max-width: 400px;
-      margin: 0 auto;
-      background-color: #f2f2f2;
-      padding: 20px;
-      border: 1px solid #ddd;
-    }
+/* Sidenav Styling */
+.sidenav {
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #1abc9c;
+  color: #fff;
+  padding: 20px;
+}
 
-    .transaction-form h2 {
-      text-align: center;
-    }
+.sidenav button,
+.sidenav a {
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #1abc9c;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
 
-    .form-group {
-      margin-bottom: 10px;
-    }
+.sidenav button:hover,
+.sidenav a:hover {
+  background-color: #16a085;
+}
 
-    .form-group label {
-      display: block;
-      margin-bottom: 5px;
-    }
+.sidenav .logout-btn {
+  margin-top: auto;
+}
 
-    .form-group select,
-    .form-group input {
-      width: 100%;
-      padding: 5px;
-      border: 1px solid #ddd;
-    }
+/* Content Styling */
+.content {
+  margin-left: 240px; /* Adjust the margin as needed */
+  padding: 40px; /* Increase the padding */
+}
 
-    button[type="submit"] {
-      display: block;
-      width: 100%;
-      margin-top: 10px;
-      padding: 10px;
-      background-color: #444;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
+.content h2 {
+  margin-top: 0;
+  margin-bottom: 30px; /* Increase the margin */
+  font-size: 24px; /* Increase the font-size */
+}
 
+.form-group {
+  margin-bottom: 30px; /* Increase the margin */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px; /* Increase the margin */
+  font-size: 18px; /* Increase the font-size */
+}
+
+.form-group select,
+.form-group input[type="number"],
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 15px; /* Increase the padding */
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px; /* Increase the margin */
+  font-size: 16px; /* Increase the font-size */
+}
+
+button[type="submit"] {
+  background-color: #1abc9c;
+  color: #fff;
+  border: none;
+  padding: 15px 30px; /* Increase the padding */
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 18px; /* Increase the font-size */
+}
+
+button[type="submit"]:hover {
+  background: rgb(245,9,91);
+  background: linear-gradient(90deg, rgba(245,9,91,1) 0%, rgba(219,41,121,1) 47%, rgba(192,73,151,1) 100%);
+
+}
+
+.content > form > button {
+  margin-top: 20px; /* Increase the margin */
+}
   </style>
 </head>
 <body>
   <div class="sidenav">
+    <h1>HELLO WORLD</h1>
     <button><a href="/dashboard">Dashboard</a></button>
     <button><a href="/transaction">Transactions</a></button>
-    <button onclick="location.href='food.html'">Food Payments</button>
-    <button onclick="location.href='bills.html'">Bill Payments</button>
-    <button onclick="location.href='others.html'">Other Expenses</button>
-    <button class="logout-btn" onclick="location.href='logout.html'">Logout</button>
+    <button><a href="/food">Food Payments</a></button>
+    <button><a href="/bills">Bill Payment</a></button>
+    <button><a href="/others">Other Expenses</a></button>
+    <button class="logout-btn"><a href="/logout">Logout</a></button>
   </div>
 
   <div class="content">
-    <h1>Transactions</h1>
-
-    <div class="transaction-form">
+    
       <h2>Add New Transaction</h2>
       <form action="/add" method="post">
         <div class="form-group">
@@ -152,7 +148,7 @@
         </div>
         <button type="submit">Add Transaction</button>
       </form>
-    </div>
+    
   </div>
 </body>
 </html>

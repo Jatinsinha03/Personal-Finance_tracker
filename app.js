@@ -1,4 +1,3 @@
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -116,17 +115,15 @@ app.get('/auth/google/dashboard',
 
 app.get("/dashboard",function(req,res){
     if (req.isAuthenticated()){
-      let currentBal = 0;
-      let fSpent = 0;
-      let bSpent = 0;
-      let cred = 0;
-      let oSpent = 0;
-      let tSpent = 0;
+      
+      let currentBal = 0; let fSpent = 0; let bSpent = 0; let cred = 0; let oSpent = 0;let tSpent = 0;
+      let types = []; let categories = []; let amounts3 = []; let descs3 = [];
       async function display(response){
         const result = await User.find({username:req.user.username}).exec();
+        let name1=result[0].name;
         cred = result[0].credit;
         currentBal = result[0].currentBalance
-        const res1 = await User.find({"$and": [{"username":"Jatin Sinha"}]},{"totalSpent":1});
+        const res1 = await User.find({"$and": [{"username":req.user.username}]},{"totalSpent":1});
         const fLength = res1[0].totalSpent.length;
         for (var i=0;i<fLength;i++){
           if (res1[0].totalSpent[i].Category==="food"){
@@ -138,10 +135,19 @@ app.get("/dashboard",function(req,res){
           }
         } 
         tSpent=fSpent+bSpent+oSpent;
-        response.render("dashboard",{currentBalance:currentBal, totalSpent: tSpent, credit:cred, food:fSpent, bill:bSpent, other:oSpent });
+        const res2 = await User.find({"$and": [{"username":req.user.username}]},{"transactions":1});
+        const ll = res2[0].transactions.length;
+        for(var i=0;i<ll;i++){
+          types.push(res2[0].transactions[i].Type);
+          categories.push(res2[0].transactions[i].Category);
+          amounts3.push(res2[0].transactions[i].Amount);
+          descs3.push(res2[0].transactions[i].Description);
+        }
+        response.render("dashboard",{name:name1,type:types, category:categories, amount:amounts3, description:descs3 ,currentBalance:currentBal, totalSpent: tSpent, credit:cred, food:fSpent, bill:bSpent, other:oSpent });
         
       }
       display(res);
+    
     }
     else{
       res.redirect("/login");
@@ -169,6 +175,72 @@ app.get("/logout",function(req,res){
       res.redirect('/');
     });
 });
+
+app.get("/food",function(req,res){
+  async function display(){
+    let amounts = [];
+    let descs = [];
+    let tAmount = 0;
+    const res1 = await User.find({"$and": [{"username":req.user.username}]},{"totalSpent":1});
+    const l = res1[0].totalSpent.length;
+    // console.log(l);
+    // console.log(res1[0].totalSpent[0]);
+    for(var i=0;i<l;i++){
+      if (res1[0].totalSpent[i].Category=="food"){
+        tAmount = +tAmount + +res1[0].totalSpent[i].Amount;
+        amounts.push(res1[0].totalSpent[i].Amount)
+        descs.push(res1[0].totalSpent[i].Description);
+      }
+    }res.render("food", {totalFood:tAmount, amount:amounts, description:descs});
+
+  }
+  display()
+});
+
+app.get("/bills",function(req,res){
+  async function display(){
+    let amounts1 = [];
+    let descs1 = [];
+    let tAmount1 = 0;
+    const res1 = await User.find({"$and": [{"username":req.user.username}]},{"totalSpent":1});
+    const l = res1[0].totalSpent.length;
+    for(var i=0;i<l;i++){
+      if (res1[0].totalSpent[i].Category=="bills"){
+        tAmount1 = +tAmount1 + +res1[0].totalSpent[i].Amount;
+        amounts1.push(res1[0].totalSpent[i].Amount)
+        descs1.push(res1[0].totalSpent[i].Description);
+      }
+    }res.render("bills", {totalBill:tAmount1, amount:amounts1, description:descs1});
+
+  }
+  display()
+});
+
+app.get("/others",function(req,res){
+  async function display(){
+    let amounts2 = [];
+    let descs2 = [];
+    let tAmount2 = 0;
+    const res1 = await User.find({"$and": [{"username":req.user.username}]},{"totalSpent":1});
+    const l = res1[0].totalSpent.length;
+    for(var i=0;i<l;i++){
+      if (res1[0].totalSpent[i].Category=="others"){
+        tAmount2 = +tAmount2 + +res1[0].totalSpent[i].Amount;
+        amounts2.push(res1[0].totalSpent[i].Amount)
+        descs2.push(res1[0].totalSpent[i].Description);
+      }
+    }res.render("others", {totalOther:tAmount2, amount:amounts2, description:descs2});
+
+  }
+  display()
+});
+
+app.get("/logout",function(req,res){
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+  });
+})
 
 
 
