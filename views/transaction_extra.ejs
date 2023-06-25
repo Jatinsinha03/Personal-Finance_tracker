@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transactions</title>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .sidenav {
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .sidenav button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .sidenav .logout-btn {
+    position: absolute;
+    bottom: 20px;
+  }
+  
+  .content {
+    margin-left: 200px;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .dashboard-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-box {
+    width: calc(33% - 10px);
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .dashboard-box h2 {
+    margin-top: 0;
+  }
+  
+  .dashboard-value {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+    .transaction-form {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #f2f2f2;
+      padding: 20px;
+      border: 1px solid #ddd;
+    }
+
+    .transaction-form h2 {
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group select,
+    .form-group input {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ddd;
+    }
+
+    button[type="submit"] {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="sidenav">
+    <button><a href="/dashboard">Dashboard</a></button>
+    <button><a href="/transaction">Transactions</a></button>
+    <button><a href="/food">Food Payments</a></button>
+    <button><a href="/bills">Bill Payment</a></button>
+    <button><a href="/others">Other Expenses</a></button>
+    <button class="logout-btn" onclick="location.href='logout.html'">Logout</button>
+  </div>
+
+  <div class="content">
+    <h1>Transactions</h1>
+
+    <div class="transaction-form">
+      <h2>Add New Transaction</h2>
+      <form action="/add" method="post">
+        <div class="form-group">
+          <label>Type:</label>
+          <select name="type">
+            <option value="debit">Debit</option>
+            <option value="credit">Credit</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Category:</label>
+          <select name="category">
+            <option value="none">None</option>
+            <option value="food">Food</option>
+            <option value="bills">Bills</option>
+            <option value="others">Others</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Amount:</label>
+          <input type="number" name="amount" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label>Description:</label>
+          <input type="text" name="description" required>
+        </div>
+        <button type="submit">Add Transaction</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

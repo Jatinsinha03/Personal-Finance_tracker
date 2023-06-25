@@ -109,32 +109,26 @@ body {
   color: #fff;
 }
 
-.food-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
 
-.food-table tbody tr:hover {
-  background-color: #ddd;
-}
 
   </style>
 </head>
 <body>
   <div class="sidenav">
     <h1>HELLO WORLD</h1>
-    <button onclick="location.href='dashboard.html'">Dashboard</button>
-    <button onclick="location.href='transaction.html'">Transactions</button>
-    <button onclick="location.href='food.html'">Food Payments</button>
-    <button onclick="location.href='bills.html'">Bill Payments</button>
-    <button onclick="location.href='others.html'">Other Expenses</button>
-    <button class="logout-btn" onclick="location.href='logout.html'">Logout</button>
+    <button><a href="/dashboard">Dashboard</a></button>
+    <button><a href="/transaction">Transactions</a></button>
+    <button><a href="/food">Food Payments</a></button>
+    <button><a href="/bills">Bill Payment</a></button>
+    <button><a href="/others">Other Expenses</a></button>
+    <button class="logout-btn"><a href="/logout">Logout</a></button>
   </div>
 
   <div class="content">
     <div class="dashboard-box" style="background: rgb(137,86,233); background: linear-gradient(90deg, rgba(137,86,233,1) 0%, rgba(77,115,230,1) 51%, rgba(77,115,230,1) 100%);">
       <h2>BILLS PAID</h2>
-      <p class="dashboard-value">$0</p>
-    </div>
+      <p class="dashboard-value"><%=totalBill%></p>
+    </div><br><br><br>
     <table class="food-table">
       <thead>
         <tr>
@@ -143,10 +137,12 @@ body {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>0</td>
-          <td>$$$$$$$$$$</td>
-        </tr>
+        <%for (var i=0;i<amount.length;i++){%>
+          <tr>
+              <td><%=amount[i]%></td>
+              <td><%=description[i]%></td>
+          </tr>
+          <%}%>
       </tbody>
     </table>
   </div>
