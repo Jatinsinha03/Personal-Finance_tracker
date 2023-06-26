@@ -22,8 +22,12 @@ The Finance Wise is a web application designed to help users manage their person
 &nbsp;
 
 
+## Demo
 
+https://finance-wise.onrender.com/
 
+&nbsp;
+&nbsp;
 
 
 ## Deployment
