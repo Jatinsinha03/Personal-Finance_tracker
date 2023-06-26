@@ -8,6 +8,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require("mongoose-findorcreate");
+const PORT = process.env.PORT || 3030;
 
 let postDescs = [];
 
@@ -75,7 +76,7 @@ passport.deserializeUser(function(user, cb) {
 passport.use(new GoogleStrategy({
   clientID: "1091782084961-h5j887mjljdgqkks5babrm38hvhssgcs.apps.googleusercontent.com",
   clientSecret: "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",
-  callbackURL: "http://localhost:3000/auth/google/dashboard"
+  callbackURL: "https://finance-wise.onrender.com/auth/google/dashboard"
   // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
 },
 function(accessToken, refreshToken, profile, cb) {
@@ -289,7 +290,7 @@ app.post("/add", function(req,res){
   // console.log(req.body.description);
 })
 
-app.listen(3000, function() {
+app.listen(PORT, function() {
   console.log("Server started on port 3000");
 });
 
