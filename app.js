@@ -143,7 +143,6 @@ app.get("/dashboard",function(req,res){
 
         
         response.render("dashboard",{date:dates,name:name1,type:types, category:categories, amount:amounts3, description:descs3 ,currentBalance:currentBal, totalSpent: tSpent, credit:cred, food:fSpent, bill:bSpent, other:oSpent });
-        
       }
       display(res);
     
