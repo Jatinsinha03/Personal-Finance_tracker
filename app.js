@@ -75,8 +75,8 @@ passport.deserializeUser(function(user, cb) {
 });
 
 passport.use(new GoogleStrategy({
-  clientID: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET,
+  clientID: "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",
+  clientSecret: "1091782084961-h5j887mjljdgqkks5babrm38hvhssgcs.apps.googleusercontent.com",
   callbackURL: "https://finance-wise.onrender.com/auth/google/dashboard"
   // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
 },
