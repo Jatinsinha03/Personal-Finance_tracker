@@ -118,7 +118,7 @@ body {
   <div class="sidenav">
     <h1 style="font-family:Roboto Condensed; text-decoration: underline;">FINANCE WISE</h1>
     <button><a href="/dashboard">Dashboard</a></button>
-    <button><a href="/transaction">Transactions</a></button>
+    <button><a href="/transaction">Add Transactions</a></button>
     <button><a href="/food">Food Payments</a></button>
     <button><a href="/bills">Bill Payment</a></button>
     <button><a href="/others">Other Expenses</a></button>
@@ -135,6 +135,7 @@ body {
         <tr>
           <th>Amount</th>
           <th>Description</th>
+          <th>Transaction Date</th>
         </tr>
       </thead>
       <tbody>
@@ -142,6 +143,7 @@ body {
           <tr>
               <td><%=amount[i]%></td>
               <td><%=description[i]%></td>
+              <td><%=date[i]%></td>
           </tr>
           <%}%>
       </tbody>
