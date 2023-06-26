@@ -26,7 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Setting Up mongoose
-mongoose.connect("mongodb://localhost:27017/financeDB",{useNewUrlParser:true});
+mongoose.connect("mongodb+srv://jatinsinha03:admin@cluster0.5enu7dl.mongodb.net/?retryWrites=true&w=majority",{useNewUrlParser:true});
 
 
 const userSchema = new  mongoose.Schema({
@@ -72,9 +72,6 @@ passport.deserializeUser(function(user, cb) {
   });
 });
 
-
-
-
 passport.use(new GoogleStrategy({
   clientID: "1091782084961-h5j887mjljdgqkks5babrm38hvhssgcs.apps.googleusercontent.com",
   clientSecret: "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",
@@ -88,7 +85,7 @@ function(accessToken, refreshToken, profile, cb) {
 }
 ));
 
-
+app.get("/auth/google",passport.authenticate("google",{ scope: ['profile'] }));
 
 
 //GET METHODS
@@ -100,7 +97,6 @@ app.get("/",function(req,res){
   res.render("landing");
 });
 
-app.get("/auth/google",passport.authenticate("google",{ scope: ['profile'] }));
 
 app.get('/auth/google/dashboard', 
   passport.authenticate('google', { failureRedirect: '/login' }),
@@ -108,6 +104,8 @@ app.get('/auth/google/dashboard',
     // Successful authentication, redirect to/dashboard.
     res.redirect('/dashboard');
   });
+
+
 
 app.get("/dashboard",function(req,res){
     if (req.isAuthenticated()){
@@ -242,10 +240,6 @@ app.get("/logout",function(req,res){
     res.redirect('/');
   });
 })
-
-
-
-
 
 app.post ("/login", passport.authenticate ("local",{failureRedirect:"/signUp", successRedirect:"/dashboard"}));
 
