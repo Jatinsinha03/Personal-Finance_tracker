@@ -82,7 +82,7 @@ To run this project, you will need to add the following environment variables to
 
 **User Dashboard**
 
-![App Screenshot](https://i.ibb.co/qNn0stc/Screenshot-2023-06-26-at-20-24-52-Personal-Finance-Dashboard.png)
+![App Screenshot](https://iili.io/HPsy89S.md.png")
 
 **Add Transaction**
 
