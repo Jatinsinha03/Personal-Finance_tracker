@@ -26,7 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Setting Up mongoose
-mongoose.connect("mongodb://localhost:27017/financeDB",{useNewUrlParser:true});
+mongoose.connect("mongodb+srv://jatinsinha03:admin@cluster0.5enu7dl.mongodb.net/?retryWrites=true&w=majority",{useNewUrlParser:true});
 
 
 const userSchema = new  mongoose.Schema({
