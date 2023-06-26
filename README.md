@@ -30,15 +30,33 @@ https://finance-wise.onrender.com/
 &nbsp;
 
 
-## Deployment
 
-To deploy this project run
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Jatinsinha03/Personal-Finance_tracker.git
+```
+
+Go to the project directory
+
+```bash
+  cd Personal-Finance_tracker
+```
+
+Install dependencies
 
 ```bash
   npm install
 ```
 
-It will install the required npm packages.
+Start the server
+
+```bash
+  node app.js
+```
+
 
 &nbsp;
 &nbsp;
