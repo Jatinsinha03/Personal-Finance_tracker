@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -8,7 +9,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require("mongoose-findorcreate");
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3000;
 
 let postDescs = [];
 
@@ -74,8 +75,8 @@ passport.deserializeUser(function(user, cb) {
 });
 
 passport.use(new GoogleStrategy({
-  clientID: "1091782084961-h5j887mjljdgqkks5babrm38hvhssgcs.apps.googleusercontent.com",
-  clientSecret: "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",
+  clientID: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
   callbackURL: "https://finance-wise.onrender.com/auth/google/dashboard"
   // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
 },
@@ -157,7 +158,12 @@ app.get("/signUp",function(req,res){
 });
 
 app.get("/transaction",function(req,res){
-  res.render("transaction");
+  if (req.isAuthenticated()){
+    res.render("transaction");
+  }else{
+    res.redirect("/login");
+  }
+  
 })
 
 
@@ -174,6 +180,7 @@ app.get("/logout",function(req,res){
 });
 
 app.get("/food",function(req,res){
+  if (req.isAuthenticated()){
   async function display(){
     let amounts = [];
     let descs = []; let dates1 = []
@@ -193,9 +200,12 @@ app.get("/food",function(req,res){
 
   }
   display()
-});
+}else{
+  res.redirect("/login");
+}});
 
 app.get("/bills",function(req,res){
+  if (req.isAuthenticated()){
   async function display(){
     let amounts1 = [];
     let descs1 = [];
@@ -213,9 +223,12 @@ app.get("/bills",function(req,res){
 
   }
   display()
-});
+  }else{
+    res.redirect("/login");
+  }});
 
 app.get("/others",function(req,res){
+  if (req.isAuthenticated()){
   async function display(){
     let amounts2 = [];
     let descs2 = [];
@@ -233,7 +246,9 @@ app.get("/others",function(req,res){
 
   }
   display()
-});
+}else{
+  res.redirect("/login");
+}});
 
 app.get("/logout",function(req,res){
   req.logout(function(err) {
