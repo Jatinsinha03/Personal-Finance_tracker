@@ -35,7 +35,7 @@ const userSchema = new  mongoose.Schema({
   username:String,
   password:String,
   googleId:String,
-  name:String,
+  name:{type:String, default: null},
   totalSpent:[{Category:String, Amount:String, Description:String, Date:String}],
   credit:{type:Number, default: 0},
   currentBalance:{type:Number, default: 0},
@@ -78,6 +78,7 @@ passport.use(new GoogleStrategy({
   clientID: "1091782084961-h5j887mjljdgqkks5babrm38hvhssgcs.apps.googleusercontent.com",
   clientSecret: "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",
   callbackURL: "https://finance-wise.onrender.com/auth/google/dashboard"
+  // callbackURL: "http://localhost:3000/auth/google/dashboard"
   // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
 },
 function(accessToken, refreshToken, profile, cb) {
@@ -117,6 +118,9 @@ app.get("/dashboard",function(req,res){
       async function display(response){
         const result = await User.find({username:req.user.username}).exec();
         let name1=result[0].name;
+        if (name1===null){
+          name1=req.user.username;
+        }
         cred = result[0].credit;
         currentBal = result[0].currentBalance
         const res1 = await User.find({"$and": [{"username":req.user.username}]},{"totalSpent":1});
