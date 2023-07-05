@@ -178,6 +178,7 @@ body {
           <th>Amount</th>
           <th>Description</th>
           <th>Transaction Date</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -188,6 +189,9 @@ body {
               <td><%=amount[i]%></td>
               <td><%=description[i]%></td>
               <td><%=date[i]%></td>
+              <form action="/delete" method="POST">
+                <td><button type="submit" name="delete" value="<%=id[i]%>">Delete</button></td>
+              </form>
           </tr>
           <%}%>
       </tbody>

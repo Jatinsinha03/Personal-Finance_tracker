@@ -36,9 +36,6 @@ const userSchema = new  mongoose.Schema({
   password:String,
   googleId:String,
   name:{type:String, default: null},
-  totalSpent:[{Category:String, Amount:String, Description:String, Date:String}],
-  credit:{type:Number, default: 0},
-  currentBalance:{type:Number, default: 0},
   transactions: [{ Type: String, Category: String, Amount:Number, Description:String, Date:String }]
 });
 
@@ -77,8 +74,8 @@ passport.deserializeUser(function(user, cb) {
 passport.use(new GoogleStrategy({
   clientID: "1091782084961-h5j887mjljdgqkks5babrm38hvhssgcs.apps.googleusercontent.com",
   clientSecret: "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",
-  callbackURL: "https://finance-wise.onrender.com/auth/google/dashboard"
-  // callbackURL: "http://localhost:3000/auth/google/dashboard"
+  // callbackURL: "https://finance-wise.onrender.com/auth/google/dashboard"
+  callbackURL: "http://localhost:3000/auth/google/dashboard"
   // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
 },
 function(accessToken, refreshToken, profile, cb) {
@@ -113,25 +110,24 @@ app.get('/auth/google/dashboard',
 app.get("/dashboard",function(req,res){
     if (req.isAuthenticated()){
       
-      let currentBal = 0; let fSpent = 0; let bSpent = 0; let cred = 0; let oSpent = 0;let tSpent = 0;
-      let types = []; let categories = []; let amounts3 = []; let descs3 = []; let dates = [];
+      let currentBal = 0; let fSpent = 0; let bSpent = 0; let cred = 0; let oSpent = 0;let tSpent = 0; 
+      let types = []; let categories = []; let amounts3 = []; let descs3 = []; let dates = []; let ids = [];
       async function display(response){
         const result = await User.find({username:req.user.username}).exec();
         let name1=result[0].name;
         if (name1===null){
           name1=req.user.username;
         }
-        cred = result[0].credit;
-        currentBal = result[0].currentBalance
-        const res1 = await User.find({"$and": [{"username":req.user.username}]},{"totalSpent":1});
-        const fLength = res1[0].totalSpent.length;
+        // currentBal = result[0].currentBalance
+        const res1 = await User.find({"$and": [{"username":req.user.username}]},{"transactions":1});
+        const fLength = res1[0].transactions.length;
         for (var i=0;i<fLength;i++){
-          if (res1[0].totalSpent[i].Category==="food"){
-            fSpent = +fSpent+ +(res1[0].totalSpent[i].Amount); 
-          } else if (res1[0].totalSpent[i].Category==="bills"){
-            bSpent = +bSpent + +(res1[0].totalSpent[i].Amount);
-          } else if (res1[0].totalSpent[i].Category==="others"){
-            oSpent = +oSpent + +(res1[0].totalSpent[i].Amount);
+          if (res1[0].transactions[i].Category==="food"){
+            fSpent = +fSpent+ +(res1[0].transactions[i].Amount); 
+          } else if (res1[0].transactions[i].Category==="bills"){
+            bSpent = +bSpent + +(res1[0].transactions[i].Amount);
+          } else if (res1[0].transactions[i].Category==="others"){
+            oSpent = +oSpent + +(res1[0].transactions[i].Amount);
           }
         } 
         tSpent=fSpent+bSpent+oSpent;
@@ -143,10 +139,18 @@ app.get("/dashboard",function(req,res){
           amounts3.push(res2[0].transactions[i].Amount);
           descs3.push(res2[0].transactions[i].Description);
           dates.push(res2[0].transactions[i].Date)
+          ids.push(res2[0].transactions[i]._id)
         }
+        for(var i=0;i<ll;i++){
+          if (res2[0].transactions[i].Type==="credit"){
+            cred = cred + res2[0].transactions[i].Amount;
+          }
+        }
+        currentBal = cred-tSpent;
+
 
         
-        response.render("dashboard",{date:dates,name:name1,type:types, category:categories, amount:amounts3, description:descs3 ,currentBalance:currentBal, totalSpent: tSpent, credit:cred, food:fSpent, bill:bSpent, other:oSpent });
+        response.render("dashboard",{id:ids,date:dates,name:name1,type:types, category:categories, amount:amounts3, description:descs3 ,currentBalance:currentBal, totalSpent: tSpent, credit:cred, food:fSpent, bill:bSpent, other:oSpent });
       }
       display(res);
     
@@ -189,16 +193,16 @@ app.get("/food",function(req,res){
     let amounts = [];
     let descs = []; let dates1 = []
     let tAmount = 0;
-    const res1 = await User.find({"$and": [{"username":req.user.username}]},{"totalSpent":1});
-    const l = res1[0].totalSpent.length;
+    const res1 = await User.find({"$and": [{"username":req.user.username}]},{"transactions":1});
+    const l = res1[0].transactions.length;
     // console.log(l);
     // console.log(res1[0].totalSpent[0]);
     for(var i=0;i<l;i++){
-      if (res1[0].totalSpent[i].Category=="food"){
-        tAmount = +tAmount + +res1[0].totalSpent[i].Amount;
-        amounts.push(res1[0].totalSpent[i].Amount)
-        descs.push(res1[0].totalSpent[i].Description);
-        dates1.push(res1[0].totalSpent[i].Date)
+      if (res1[0].transactions[i].Category=="food"){
+        tAmount = +tAmount + +res1[0].transactions[i].Amount;
+        amounts.push(res1[0].transactions[i].Amount)
+        descs.push(res1[0].transactions[i].Description);
+        dates1.push(res1[0].transactions[i].Date)
       }
     }res.render("food", {date:dates1,totalFood:tAmount, amount:amounts, description:descs});
 
@@ -214,14 +218,14 @@ app.get("/bills",function(req,res){
     let amounts1 = [];
     let descs1 = [];
     let tAmount1 = 0; let dates2 = [];
-    const res1 = await User.find({"$and": [{"username":req.user.username}]},{"totalSpent":1});
-    const l = res1[0].totalSpent.length;
+    const res1 = await User.find({"$and": [{"username":req.user.username}]},{"transactions":1});
+    const l = res1[0].transactions.length;
     for(var i=0;i<l;i++){
-      if (res1[0].totalSpent[i].Category=="bills"){
-        tAmount1 = +tAmount1 + +res1[0].totalSpent[i].Amount;
-        amounts1.push(res1[0].totalSpent[i].Amount)
-        descs1.push(res1[0].totalSpent[i].Description);
-        dates2.push(res1[0].totalSpent[i].Date);
+      if (res1[0].transactions[i].Category=="bills"){
+        tAmount1 = +tAmount1 + +res1[0].transactions[i].Amount;
+        amounts1.push(res1[0].transactions[i].Amount)
+        descs1.push(res1[0].transactions[i].Description);
+        dates2.push(res1[0].transactions[i].Date);
       }
     }res.render("bills", {date:dates2,totalBill:tAmount1, amount:amounts1, description:descs1});
 
@@ -237,14 +241,14 @@ app.get("/others",function(req,res){
     let amounts2 = [];
     let descs2 = [];
     let tAmount2 = 0; let dates3 = [];
-    const res1 = await User.find({"$and": [{"username":req.user.username}]},{"totalSpent":1});
-    const l = res1[0].totalSpent.length;
+    const res1 = await User.find({"$and": [{"username":req.user.username}]},{"transactions":1});
+    const l = res1[0].transactions.length;
     for(var i=0;i<l;i++){
-      if (res1[0].totalSpent[i].Category=="others"){
-        tAmount2 = +tAmount2 + +res1[0].totalSpent[i].Amount;
-        amounts2.push(res1[0].totalSpent[i].Amount)
-        descs2.push(res1[0].totalSpent[i].Description);
-        dates3.push(res1[0].totalSpent[i].Date);
+      if (res1[0].transactions[i].Category=="others"){
+        tAmount2 = +tAmount2 + +res1[0].transactions[i].Amount;
+        amounts2.push(res1[0].transactions[i].Amount)
+        descs2.push(res1[0].transactions[i].Description);
+        dates3.push(res1[0].transactions[i].Date);
       }
     }res.render("others", {date:dates3,totalOther:tAmount2, amount:amounts2, description:descs2});
 
@@ -284,30 +288,26 @@ app.post("/add", function(req,res){
     let currentDate1 = `${currentDay}-${currentMonth}-${currentYear}`;
     let time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
     let currentDate = currentDate1 + " " + time;
-
-  if (req.body.type==="debit"){
-    //console.log(req.user.username);
     async function updatef(){
-    await User.findOneAndUpdate({username:req.user.username},{$push:{totalSpent:{Category:req.body.category, Amount:req.body.amount, Description:req.body.description, Date:currentDate}}}).exec();
     await User.findOneAndUpdate({username:req.user.username},{$push:{transactions:{Type: req.body.type, Category:req.body.category, Amount:req.body.amount, Description:req.body.description, Date:currentDate}}}).exec();
-    await User.findOneAndUpdate({username:req.user.username},{$inc:{currentBalance:-req.body.amount}});
-  }
-  updatef();
-  }else if(req.body.type==="credit") {
-    async function updatef(){
-      await User.findOneAndUpdate({username:req.user.username},{$push:{transactions:{Type: req.body.type, Category:req.body.category, Amount:req.body.amount, Description:req.body.description, Date:currentDate}}}).exec();
-      await User.findOneAndUpdate({username:req.user.username},{$inc:{credit:req.body.amount}});
-      await User.findOneAndUpdate({username:req.user.username},{$inc:{currentBalance:req.body.amount}});
-      
     }
     updatef();
-  }
+
+  
   res.redirect("/dashboard");
   // console.log(req.body.type);
   // console.log(req.body.category);
   // console.log(req.body.amount);
   // console.log(req.body.description);
 })
+
+app.post("/delete",function(req,res){
+  async function deletef(){
+    await User.findOneAndUpdate({username:req.user.username},{$pull:{transactions:{_id:req.body.delete}}}).exec();
+  }
+  deletef();
+  res.redirect("/dashboard");
+});
 
 app.listen(PORT, function() {
   console.log("Server started on port 3000");
