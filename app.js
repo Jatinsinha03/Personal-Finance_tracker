@@ -74,8 +74,8 @@ passport.deserializeUser(function(user, cb) {
 passport.use(new GoogleStrategy({
   clientID: "1091782084961-h5j887mjljdgqkks5babrm38hvhssgcs.apps.googleusercontent.com",
   clientSecret: "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",
-  // callbackURL: "https://finance-wise.onrender.com/auth/google/dashboard"
-  callbackURL: "http://localhost:3000/auth/google/dashboard"
+  callbackURL: "https://finance-wise.onrender.com/auth/google/dashboard"
+  // callbackURL: "http://localhost:3000/auth/google/dashboard"
   // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
 },
 function(accessToken, refreshToken, profile, cb) {
